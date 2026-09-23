@@ -18,4 +18,6 @@ RUN python manage.py collectstatic --noinput
 
 EXPOSE 8080
 
-CMD ["gunicorn", "sist_project.wsgi:application", "--bind", "0.0.0.0:8080", "--workers", "3"]
+# `start.sh` runs migrations before starting Gunicorn. This is required for a
+# fresh Render deployment, including a temporary SQLite preview database.
+CMD ["bash", "start.sh"]
