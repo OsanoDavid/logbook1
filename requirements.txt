@@ -4,3 +4,4 @@ whitenoise==6.9.0
 dj-database-url==2.2.0
 psycopg[binary]==3.2.10
 django-anymail
+Pillow
