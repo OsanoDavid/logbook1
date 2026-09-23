@@ -133,7 +133,6 @@
 
 <div class="bg-orbs"></div>
 
-<!-- NAV: both buttons scroll to #schools instead of leaving page -->
 <nav id="top-nav">
     <a href="/" class="nav-brand">
         <img src="{% static 'images/logo.jpeg' %}" alt="Kisii University Crest">
@@ -144,8 +143,8 @@
     </a>
     <div class="nav-actions">
         <a href="#" class="nav-btn" onclick="openTermsModal(event)" style="background: transparent; border: 1px solid rgba(255,255,255,0.15);">Terms & Conditions</a>
-        <a href="#schools" class="nav-btn" onclick="scrollToSchools(event)">Register</a>
-        <a href="#schools" class="nav-btn primary" onclick="scrollToSchools(event)">Sign In</a>
+        <a href="{% url 'landing' %}?action=register#schools" class="nav-btn">Register</a>
+        <a href="{% url 'core:login' %}" class="nav-btn primary">Sign In</a>
     </div>
 </nav>
 
@@ -233,56 +232,56 @@
     <div class="section-header">
         <div class="section-tag">Schools &amp; Faculties</div>
         <h2 class="section-title">Select Your <span class="accent">School</span></h2>
-        <p class="section-desc">Click on your school to open the dedicated digital attachment logbook portal for your faculty.</p>
+        <p class="section-desc">{% if school_action == 'register' %}Select your school to open its registration dashboard.{% else %}Click on your school to open the dedicated digital attachment logbook portal for your faculty.{% endif %}</p>
     </div>
     <div class="schools-grid" id="schoolsGrid">
-        <a href="{% url 'core:login' %}?school=SIST" class="school-card card-sist" data-school="SIST" data-name="School of Information Sciences &amp; Technology">
+        <a href="{% if school_action == 'register' %}{% url 'core:register' %}{% else %}{% url 'core:login' %}{% endif %}?school=SIST" class="school-card card-sist" data-school="SIST" data-name="School of Information Sciences &amp; Technology">
             <div class="card-icon-wrap">&#128187;</div>
             <div class="card-code">SIST</div>
             <div class="card-name">School of Information Sciences &amp; Technology</div>
-            <div class="card-footer-row"><span class="card-cta-text">Open Logbook</span><span class="card-arrow">&#8594;</span></div>
+            <div class="card-footer-row"><span class="card-cta-text">{% if school_action == 'register' %}Register{% else %}Open Logbook{% endif %}</span><span class="card-arrow">&#8594;</span></div>
         </a>
-        <a href="{% url 'core:login' %}?school=SASS" class="school-card card-sass" data-school="SASS" data-name="School of Arts and Social Sciences">
+        <a href="{% if school_action == 'register' %}{% url 'core:register' %}{% else %}{% url 'core:login' %}{% endif %}?school=SASS" class="school-card card-sass" data-school="SASS" data-name="School of Arts and Social Sciences">
             <div class="card-icon-wrap">&#127917;</div>
             <div class="card-code">SASS</div>
             <div class="card-name">School of Arts and Social Sciences</div>
-            <div class="card-footer-row"><span class="card-cta-text">Open Logbook</span><span class="card-arrow">&#8594;</span></div>
+            <div class="card-footer-row"><span class="card-cta-text">{% if school_action == 'register' %}Register{% else %}Open Logbook{% endif %}</span><span class="card-arrow">&#8594;</span></div>
         </a>
-        <a href="{% url 'core:login' %}?school=SOBE" class="school-card card-sobe" data-school="SOBE" data-name="School of Business and Economics">
+        <a href="{% if school_action == 'register' %}{% url 'core:register' %}{% else %}{% url 'core:login' %}{% endif %}?school=SOBE" class="school-card card-sobe" data-school="SOBE" data-name="School of Business and Economics">
             <div class="card-icon-wrap">&#128202;</div>
             <div class="card-code">SOBE</div>
             <div class="card-name">School of Business and Economics</div>
-            <div class="card-footer-row"><span class="card-cta-text">Open Logbook</span><span class="card-arrow">&#8594;</span></div>
+            <div class="card-footer-row"><span class="card-cta-text">{% if school_action == 'register' %}Register{% else %}Open Logbook{% endif %}</span><span class="card-arrow">&#8594;</span></div>
         </a>
-        <a href="{% url 'core:login' %}?school=SEDHURED" class="school-card card-sedhured" data-school="SEDHURED" data-name="School of Education and Human Resource Development">
+        <a href="{% if school_action == 'register' %}{% url 'core:register' %}{% else %}{% url 'core:login' %}{% endif %}?school=SEDHURED" class="school-card card-sedhured" data-school="SEDHURED" data-name="School of Education and Human Resource Development">
             <div class="card-icon-wrap">&#127891;</div>
             <div class="card-code">SEDHURED</div>
             <div class="card-name">School of Education and Human Resource Development</div>
-            <div class="card-footer-row"><span class="card-cta-text">Open Logbook</span><span class="card-arrow">&#8594;</span></div>
+            <div class="card-footer-row"><span class="card-cta-text">{% if school_action == 'register' %}Register{% else %}Open Logbook{% endif %}</span><span class="card-arrow">&#8594;</span></div>
         </a>
-        <a href="{% url 'core:login' %}?school=SHS" class="school-card card-shs" data-school="SHS" data-name="School of Health Sciences">
+        <a href="{% if school_action == 'register' %}{% url 'core:register' %}{% else %}{% url 'core:login' %}{% endif %}?school=SHS" class="school-card card-shs" data-school="SHS" data-name="School of Health Sciences">
             <div class="card-icon-wrap">&#127973;</div>
             <div class="card-code">SHS</div>
             <div class="card-name">School of Health Sciences</div>
-            <div class="card-footer-row"><span class="card-cta-text">Open Logbook</span><span class="card-arrow">&#8594;</span></div>
+            <div class="card-footer-row"><span class="card-cta-text">{% if school_action == 'register' %}Register{% else %}Open Logbook{% endif %}</span><span class="card-arrow">&#8594;</span></div>
         </a>
-        <a href="{% url 'core:login' %}?school=SLAW" class="school-card card-slaw" data-school="SLAW" data-name="School of Law">
+        <a href="{% if school_action == 'register' %}{% url 'core:register' %}{% else %}{% url 'core:login' %}{% endif %}?school=SLAW" class="school-card card-slaw" data-school="SLAW" data-name="School of Law">
             <div class="card-icon-wrap">&#9878;</div>
             <div class="card-code">SLAW</div>
             <div class="card-name">School of Law</div>
-            <div class="card-footer-row"><span class="card-cta-text">Open Logbook</span><span class="card-arrow">&#8594;</span></div>
+            <div class="card-footer-row"><span class="card-cta-text">{% if school_action == 'register' %}Register{% else %}Open Logbook{% endif %}</span><span class="card-arrow">&#8594;</span></div>
         </a>
-        <a href="{% url 'core:login' %}?school=SPAS" class="school-card card-spas" data-school="SPAS" data-name="School of Pure and Applied Sciences">
+        <a href="{% if school_action == 'register' %}{% url 'core:register' %}{% else %}{% url 'core:login' %}{% endif %}?school=SPAS" class="school-card card-spas" data-school="SPAS" data-name="School of Pure and Applied Sciences">
             <div class="card-icon-wrap">&#128300;</div>
             <div class="card-code">SPAS</div>
             <div class="card-name">School of Pure and Applied Sciences</div>
-            <div class="card-footer-row"><span class="card-cta-text">Open Logbook</span><span class="card-arrow">&#8594;</span></div>
+            <div class="card-footer-row"><span class="card-cta-text">{% if school_action == 'register' %}Register{% else %}Open Logbook{% endif %}</span><span class="card-arrow">&#8594;</span></div>
         </a>
-        <a href="{% url 'core:login' %}?school=SANRM" class="school-card card-sanrm" data-school="SANRM" data-name="School of Agriculture and Natural Resources Management">
+        <a href="{% if school_action == 'register' %}{% url 'core:register' %}{% else %}{% url 'core:login' %}{% endif %}?school=SANRM" class="school-card card-sanrm" data-school="SANRM" data-name="School of Agriculture and Natural Resources Management">
             <div class="card-icon-wrap">&#127806;</div>
             <div class="card-code">SANRM</div>
             <div class="card-name">School of Agriculture and Natural Resources Management</div>
-            <div class="card-footer-row"><span class="card-cta-text">Open Logbook</span><span class="card-arrow">&#8594;</span></div>
+            <div class="card-footer-row"><span class="card-cta-text">{% if school_action == 'register' %}Register{% else %}Open Logbook{% endif %}</span><span class="card-arrow">&#8594;</span></div>
         </a>
     </div>
 </section>
@@ -295,7 +294,7 @@
             <ul>
                 <li><a href="#schools" onclick="scrollToSchools(event)">Select Your School</a></li>
                 <li><a href="{% url 'core:login' %}?school=SIST">SIST Logbook</a></li>
-                <li><a href="{% url 'core:register' %}?school=SIST">Register Account</a></li>
+                <li><a href="{% url 'landing' %}?action=register#schools">Register Account</a></li>
                 <li><a href="/admins/">Administrator Portal</a></li>
             </ul>
         </div>

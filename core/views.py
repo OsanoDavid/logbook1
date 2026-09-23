@@ -63,6 +63,12 @@ def get_school_context(request):
 
 
 def landing_view(request):
+    # The landing page is also the school picker for new registrations.  Keep
+    # the requested destination in the context so a selected school can take
+    # the visitor straight to the appropriate portal page.
+    school_action = request.GET.get('action', '').lower()
+    if school_action not in {'register', 'login'}:
+        school_action = 'login'
     current_yr_int = datetime.now().year
     five_year_stats = []
     total_5yr_completed = 0
@@ -80,6 +86,7 @@ def landing_view(request):
         'five_year_stats': five_year_stats,
         'total_5yr_completed': total_5yr_completed,
         'last_year_completed': last_year_completed,
+        'school_action': school_action,
     })
 
 
