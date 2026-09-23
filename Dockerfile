@@ -1,4 +1,5 @@
-FROM python:3.11-slim
+# Django 6 requires Python 3.12 or later.
+FROM python:3.12-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1
 ENV PYTHONUNBUFFERED=1
